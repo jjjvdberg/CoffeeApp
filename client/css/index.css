@@ -1,0 +1,35 @@
+/* 
+    Created on : 7-okt-2014, 21:02:20
+    Author     : joel
+*/
+body {
+  padding: 0;
+  margin: 0; }
+
+.page {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  overflow: hidden; }
+
+.page.active {
+  height: 100%;
+  background-color: #CCECEE; }
+
+.page.active.hide {
+  height: 0;
+  background-color: #CCECEE; }
+
+.page.inactive {
+  height: 110%;
+  background-color: #8AA7A8; }
+
+.page.inactive.hide {
+  height: 0;
+  background-color: #8AA7A8; }
+
+.page div {
+  padding: 2em; }
+
+/*# sourceMappingURL=index.css.map */

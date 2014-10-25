@@ -1,0 +1,20 @@
+.page#start button {
+  cursor: pointer;
+  width: 3.75em;
+  height: 3.75em;
+  border-color: white;
+  border-width: 0.25em;
+  border-style: solid;
+  background-color: #8AA7A8;
+  color: white;
+  font-size: 5em;
+  -webkit-border-radius: 2.5em;
+  -moz-border-radius: 2.5em;
+  border-radius: 2.5em; }
+
+.page#round_optin button {
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em; }
+
+/*# sourceMappingURL=pages.css.map */

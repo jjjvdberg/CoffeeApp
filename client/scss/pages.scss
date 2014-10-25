@@ -1,0 +1,29 @@
+
+
+.page#start {
+    $buttonsize: 5em;
+    button {
+        cursor:pointer;
+        width:$buttonsize * 0.75;
+        height:$buttonsize * 0.75;
+        border-color: white;
+        border-width: $buttonsize / 20;
+        border-style: solid;
+        background-color: #8AA7A8;
+        color: white;
+        font-size: $buttonsize;
+        -webkit-border-radius: $buttonsize * 0.5;
+        -moz-border-radius: $buttonsize * 0.5;
+        border-radius: $buttonsize * 0.5;
+    }
+}
+
+.page#round_optin {
+    $buttonsize: 2em;
+    button {
+        cursor:pointer;
+        width:$buttonsize * 0.75;
+        height:$buttonsize * 0.75;
+        
+    }
+}

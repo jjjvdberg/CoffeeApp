@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Grabba</title>
+        <script src="lib/jquery-1.11.1.js"></script>
+        <script src="lib/jquery.animate-colors-min.js"></script>
+        <script src="lib/jquery-ui.min.js"></script>
+        <script src="lib/keyevent.js"></script>
+        <script src="lib/anipager.js"></script>
+        
+        <script src="js/grabba.state.js"></script>
+        <script src="js/grabba.data.js"></script>
+        
+        <script src="js/states/start.js"></script>
+        <script src="js/states/observer.js"></script>
+        <script src="js/states/config.js"></script>
+        <script src="js/states/drink_start.js"></script>
+        <script src="js/states/round_start.js"></script>
+        <script src="js/states/round_optin.js"></script>
+        <script src="js/states/round_end.js"></script>
+        
+        <script src="js/index.js"></script>
+        
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <link href="css/pages.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="pages">
+            <div id="start" class="page">
+                <div>
+                    <h1>Start</h1>
+                    <div class="content">
+                        <button id="start_to_config">GO</button>
+                        <p><a href="#" id="start_to_observer">Observe</a></p>
+                    </div>  
+                </div>
+            </div>
+            <div id="config" class="page">
+                <div>
+                    <h2>What you want?</h2>
+                    <div class="content">
+                        <p><label>Naam</label><input type="text" id="config_name" /></p>
+                        <p><label>Drank</label><input type="text" id="config_drink" /></p>
+                        <p><button id="config_start">Start</button></p>
+                    </div>
+                </div>
+            </div>
+            <div id="observer" class="page">
+                <div>
+                    <h2>Who's enjoying what?</h2>
+                    <div class="content">
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="drink_start" class="page">
+                <div>
+                    <h2>Would you like your <span class="grabba-data" data-listen="drink"></span>, <span class="grabba-data" data-listen="name"></span>?</h2>
+                    <div class="content">
+                        <button id="drink_start_start_round">Yes please!</button>                        
+                    </div>
+                </div>
+            </div>
+            <div id="round_optin" class="page">
+                <div>
+                    <h2>Someone beat you to it! Are you in?</h2>
+                    <div class="content">
+                        <button id="round_optin_yes">Yes</button>     
+                        <button id="round_optin_no">No</button>                       
+                    </div>
+                </div>
+            </div>
+            <div id="round_start" class="page">
+                <div>
+                    <h2>Waiting for others...</h2>
+                </div>
+            </div>
+            <div id="round_end" class="page">
+                <div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+    
