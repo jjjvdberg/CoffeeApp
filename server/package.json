@@ -1,0 +1,8 @@
+{
+  "name": "grabba",
+  "version": "0.0.1",
+  "description": "Coffee App",
+  "dependencies": {
+    "socket.io": "^1.1.0"
+  }
+}

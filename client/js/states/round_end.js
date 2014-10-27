@@ -7,6 +7,8 @@ Grabba.State.states[Grabba.State.ROUND_END] = {
     page:"round_end",
     listeners:[
         ["round_end_back","click",round_end_onBackClick]
+    ],
+    serverListeners:[
     ]
 };
 

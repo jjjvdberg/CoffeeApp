@@ -12,6 +12,8 @@ Grabba.State.states[Grabba.State.ROUND_OPTIN] = {
     listeners:[
         ["round_optin_yes","click",round_optin_onYesClick],
         ["round_optin_no","click",round_optin_onNoClick]
+    ],
+    serverListeners:[
     ]
 };
 

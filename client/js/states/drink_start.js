@@ -7,6 +7,8 @@ Grabba.State.states[Grabba.State.DRINK_START] = {
     page:"drink_start",
     listeners:[
         ["drink_start_start_round","click",onStartRoundClick]
+    ],
+    serverListeners:[
     ]
 };
 

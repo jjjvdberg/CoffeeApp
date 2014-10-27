@@ -12,6 +12,8 @@ Grabba.State.states[Grabba.State.START] = {
     listeners:[
         ["start_to_config","click",start_onStartClick],
         ["start_to_observer","click",start_onObserveClick]
+    ],
+    serverListeners:[
     ]
 };
 
