@@ -25,12 +25,14 @@
                 return;
             }
             nextPage.appendTo(obj).removeClass("inactive").addClass("active");
+            
             currentPage.switchClass("active","inactive",function(){
                 $(this).addClass("hide");  
                 $(this).parent().data("hideDone",true);
             });
             nextPage.switchClass("hide","",function() {
                 $(this).parent().data("showDone",true);
+                $(this).trigger("ready");
             });
         }
     }

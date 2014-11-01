@@ -38,6 +38,8 @@ _sys.puts("Server running on 8080");
 connection.on('connection', function(socket){
   _sys.puts('a user connected');
   GRABBA.users.push(socket.id);
+  var responses = [];
+  var expectedResponses = -1;
   
   socket.on('disconnect', function(){
     _sys.puts('user disconnected');
@@ -50,7 +52,24 @@ connection.on('connection', function(socket){
   socket.on("config", function(name,drink){
       _sys.puts(socket.id + " user " + name + " wants " + drink);
       GRABBA.configs[socket.id] = {name:name,drink:drink};
+  });
+  
+  socket.on("get users", function(){
       connection.emit("update users",JSON.stringify(GRABBA.configs));
+  });
+  
+  socket.on("round start", function() {
+      expectedResponses = GRABBA.configs.length;
+      responses = [];
+      connection.emit("round started");
+  });
+  
+  socket.on("round ready", function(response) {
+      responses[socket.id] = response;
+      _sys.puts(responses);
+      if(expectedResponses === responses.length) {
+          _sys.puts(responses);
+      }
   });
 });
 
