@@ -4,10 +4,18 @@ var _path = require("path");
 var _url = require("url");
 var _fileSystem = require("fs");
 var _io = require("socket.io");
+// TODO move this to a requirement
+// var _functions = require("grabba.functions");
+function randomInt(low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
+// end serverfunctions
 
 var GRABBA = {};
 GRABBA.users = new Array();
 GRABBA.configs = {};
+GRABBA.responses = {};
+GRABBA.expectedResponses = -1;
 
 var httpServer = _http.createServer(function(request,response) {
     var path = _url.parse(request.url).pathname;
@@ -38,8 +46,6 @@ _sys.puts("Server running on 8080");
 connection.on('connection', function(socket){
   _sys.puts('a user connected');
   GRABBA.users.push(socket.id);
-  var responses = [];
-  var expectedResponses = -1;
   
   socket.on('disconnect', function(){
     _sys.puts('user disconnected');
@@ -59,16 +65,21 @@ connection.on('connection', function(socket){
   });
   
   socket.on("round start", function() {
-      expectedResponses = GRABBA.configs.length;
-      responses = [];
+      GRABBA.expectedResponses = Object.keys(GRABBA.configs).length;
+      GRABBA.responses = {};
       connection.emit("round started");
   });
   
   socket.on("round ready", function(response) {
-      responses[socket.id] = response;
-      _sys.puts(responses);
-      if(expectedResponses === responses.length) {
-          _sys.puts(responses);
+      GRABBA.responses[socket.id] = response;
+      var numberOfResponses = Object.keys(GRABBA.responses).length;
+      if(GRABBA.expectedResponses === numberOfResponses) {
+          _sys.puts("everyone has replied");
+          var luckyNumber = randomInt(0,GRABBA.expectedResponses - 1);
+          for(var k in GRABBA.users) {
+              var address = GRABBA.users[k];
+              socket.broadcast.to(address).emit('round ended', k === luckyNumber);
+          }
       }
   });
 });

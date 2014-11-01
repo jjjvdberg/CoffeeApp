@@ -11,6 +11,7 @@ Grabba.State.DRINK_START = "drink_start";
 Grabba.State.ROUND_OPTIN = "round_optin";
 Grabba.State.ROUND_START = "round_start";
 Grabba.State.ROUND_END = "round_end";
+Grabba.State.ROUND_END_LUCKY = "round_end_lucky";
 
 Grabba.State.prototype.set = function(state) {
     var previousStateObject = Grabba.State.states[this.state];
