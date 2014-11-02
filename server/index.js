@@ -74,11 +74,10 @@ connection.on('connection', function(socket){
       GRABBA.responses[socket.id] = response;
       var numberOfResponses = Object.keys(GRABBA.responses).length;
       if(GRABBA.expectedResponses === numberOfResponses) {
-          _sys.puts("everyone has replied");
           var luckyNumber = randomInt(0,GRABBA.expectedResponses - 1);
           for(var k in GRABBA.users) {
-              var address = GRABBA.users[k];
-              socket.broadcast.to(address).emit('round ended', k === luckyNumber);
+                var address = GRABBA.users[k];
+                connection.to(address).emit('round ended', k === luckyNumber);
           }
       }
   });

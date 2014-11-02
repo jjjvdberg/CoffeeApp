@@ -12,9 +12,20 @@
   -moz-border-radius: 2.5em;
   border-radius: 2.5em; }
 
+.page#config button,
+.page#drink_start button,
+.page#round_end button,
 .page#round_optin button {
   cursor: pointer;
-  width: 1.5em;
-  height: 1.5em; }
+  border-color: white;
+  border-width: 0.1em;
+  border-style: solid;
+  background-color: #8AA7A8;
+  color: white;
+  font-size: 2em;
+  padding: 0.2em;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em; }
 
 /*# sourceMappingURL=pages.css.map */

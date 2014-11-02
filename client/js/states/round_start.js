@@ -8,13 +8,11 @@ round_start_roundStarted = function() {
 
 round_start_roundEnded = function(lucky) {
     if(lucky) {
-        $G.set(GRABBA.State.ROUND_END_LUCKY);
+        $G.set(Grabba.State.ROUND_END_LUCKY);
     } else {
-        $G.set(GRABBA.State.ROUND_END);
+        $G.set(Grabba.State.ROUND_END);
     }
 };
-
-
 
 Grabba.State.states[Grabba.State.ROUND_START] = {
     name:"Round Start",
