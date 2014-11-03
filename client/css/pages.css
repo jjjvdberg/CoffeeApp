@@ -15,6 +15,7 @@
 .page#config button,
 .page#drink_start button,
 .page#round_end button,
+.page#round_end_lucky button,
 .page#round_optin button {
   cursor: pointer;
   border-color: white;

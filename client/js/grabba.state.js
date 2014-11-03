@@ -8,8 +8,10 @@ Grabba.State.START = "start";
 Grabba.State.CONFIG = "config";
 Grabba.State.OBSERVER = "observer";
 Grabba.State.DRINK_START = "drink_start";
-Grabba.State.ROUND_OPTIN = "round_optin";
 Grabba.State.ROUND_START = "round_start";
+Grabba.State.ROUND_OPTIN = "round_optin";
+Grabba.State.ROUND_JOIN = "round_join";
+Grabba.State.ROUND_PASS = "round_pass";
 Grabba.State.ROUND_END = "round_end";
 Grabba.State.ROUND_END_LUCKY = "round_end_lucky";
 

@@ -7,7 +7,7 @@ var _io = require("socket.io");
 // TODO move this to a requirement
 // var _functions = require("grabba.functions");
 function randomInt(low, high) {
-    return Math.floor(Math.random() * (high - low) + low);
+    return Math.floor(Math.random() * (high + 1 - low) + low);
 }
 // end serverfunctions
 
@@ -51,6 +51,9 @@ connection.on('connection', function(socket){
     _sys.puts('user disconnected');
     var i = GRABBA.users.indexOf(socket.id);
     GRABBA.users.splice(i,1);
+    if(socket.id in GRABBA.configs) {
+        addResponse(socket,false);
+    }
     delete GRABBA.configs[socket.id];
     connection.emit("update users",JSON.stringify(GRABBA.configs));
   });
@@ -71,16 +74,30 @@ connection.on('connection', function(socket){
   });
   
   socket.on("round ready", function(response) {
+      addResponse(socket,response);
+  });
+  
+  function addResponse(socket,response) {
       GRABBA.responses[socket.id] = response;
       var numberOfResponses = Object.keys(GRABBA.responses).length;
       if(GRABBA.expectedResponses === numberOfResponses) {
-          var luckyNumber = randomInt(0,GRABBA.expectedResponses - 1);
-          for(var k in GRABBA.users) {
-                var address = GRABBA.users[k];
-                connection.to(address).emit('round ended', k === luckyNumber);
+          var positiveResponses = [];
+          for(var k in GRABBA.responses) {
+              response = GRABBA.responses[k];
+              if(response) {
+                  positiveResponses.push(k);
+              }
           }
+          
+          var luckyNumber = randomInt(0,positiveResponses.length - 1);
+          for(var k in positiveResponses) {
+            var address = positiveResponses[k];
+            _sys.puts("sending " + k + "===" + luckyNumber + " = "+ (parseInt(k)===luckyNumber) + " to " + address);
+            connection.to(address).emit('round ended', parseInt(k) === luckyNumber);
+          }
+          connection.emit('round ended');
       }
-  });
+  }
 });
 
 httpServer.listen(8080);

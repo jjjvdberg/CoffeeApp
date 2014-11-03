@@ -1,9 +1,9 @@
 function round_optin_onYesClick() {
-    $G.set(Grabba.State.ROUND_START);
+    $G.set(Grabba.State.ROUND_JOIN);
 }
 
 function round_optin_onNoClick() {
-    $G.set(Grabba.State.DRINK_START);
+    $G.set(Grabba.State.ROUND_PASS);
 }
 
 Grabba.State.states[Grabba.State.ROUND_OPTIN] = {
