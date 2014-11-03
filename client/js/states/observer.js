@@ -1,5 +1,4 @@
 observer_updateUserList = function(users) {
-    var users = JSON.parse(users);
     var userlist = $("#observer").find("#userlist");
     userlist.empty();
     $.each(users,function(k,e){

@@ -55,12 +55,13 @@ connection.on('connection', function(socket){
         addResponse(socket,false);
     }
     delete GRABBA.configs[socket.id];
-    connection.emit("update users",JSON.stringify(GRABBA.configs));
+    connection.emit("update users",GRABBA.configs);
   });
   
   socket.on("config", function(name,drink){
       _sys.puts(socket.id + " user " + name + " wants " + drink);
       GRABBA.configs[socket.id] = {name:name,drink:drink};
+      connection.emit("update users",GRABBA.configs);
   });
   
   socket.on("get users", function(){
@@ -75,6 +76,17 @@ connection.on('connection', function(socket){
   
   socket.on("round ready", function(response) {
       addResponse(socket,response);
+  });
+  
+  socket.on("round get order", function() {
+    var order = [];
+    for(var k in GRABBA.responses) {
+       response = GRABBA.responses[k];
+       if(response) {
+           order.push(GRABBA.configs[k]);
+       }
+    } 
+    connection.emit('round order', order);
   });
   
   function addResponse(socket,response) {
