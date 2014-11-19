@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-nov-2014, 17:13:46
+    Author     : joel
+*/
+body {
+    font-family:Georgia;
+}
+@mixin round($roundness) {
+    -webkit-border-radius: $roundness;
+    -moz-border-radius: $roundness;
+    border-radius: $roundness;
+}
+.message>div {
+    padding:0.5em;
+    font-size: 3em;
+    input {
+        font-size:1em;
+        @include round(.5em);
+        padding-left:.2em;
+        border:2px solid gray;
+    }
+    margin:0.2em 0.2em 0 0.2em;
+    border:2px solid gray;
+    @include round(20px);
+}
+
+.message .buttons {
+    display:block;
+    text-align:center;
+    button {
+        display:inline;
+        font-size:.7em;
+        margin:0.1em;
+        @include round(.2em);
+        border:2px solid gray;
+        background-color:white;
+        cursor:pointer;
+    }
+}
+
+.message.read {
+    color:#CCC;
+    >div {
+        border:2px solid #EEE;
+    }
+}

@@ -2,6 +2,7 @@ Grabba = (typeof Grabba === "undefined") ? {} : Grabba;
 Grabba.State = function() {
     this.state = Grabba.State.START;    
     this.socket = io();
+    this.message = null;
 };
 Grabba.State.states = [];
 Grabba.State.START = "start";
@@ -17,18 +18,28 @@ Grabba.State.ROUND_END_LUCKY = "round_end_lucky";
 
 Grabba.State.prototype.set = function(state) {
     var previousStateObject = Grabba.State.states[this.state];
-    Grabba.State.setListeners(previousStateObject.listeners, false);
+    Grabba.State.setListeners(this.message, previousStateObject.listeners, false);
     Grabba.State.setServerListeners(previousStateObject.serverListeners, false);
     this.state = state;
+    
     var stateObject = Grabba.State.states[state];
-    Grabba.State.setListeners(stateObject.listeners, true);
+    this.message = $("#stackitems").find("."+stateObject.page).clone();
+    
+    Grabba.State.setListeners(this.message, stateObject.listeners, true);
     Grabba.State.setServerListeners(stateObject.serverListeners, true);
-    $("#pages").anipager("show",stateObject.page);
+    
+    this.message.trigger("before");
+    $("#messagestack").messageStack("send",this.message);
+    this.message.trigger("ready");
 };
 
-Grabba.State.setListeners = function(listeners,on) {
+Grabba.State.setListeners = function(message, listeners, on) {
+    if(message === null) return;
     $.each(listeners,function(_,e){
-        var elem = $("#"+e[0]);
+        var elem = message;
+        if(null !== e[0]) {
+            elem = elem.find("." + e[0]);
+        }
         var event = e[1];
         var listener = e[2];
         if(on) {
@@ -38,7 +49,7 @@ Grabba.State.setListeners = function(listeners,on) {
         }
     });
 };
-Grabba.State.setServerListeners = function(listeners,on) {
+Grabba.State.setServerListeners = function(listeners, on) {
     $.each(listeners,function(_,e){
         var event = e[0];
         var listener = e[1];

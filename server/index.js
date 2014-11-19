@@ -94,10 +94,13 @@ connection.on('connection', function(socket){
       var numberOfResponses = Object.keys(GRABBA.responses).length;
       if(GRABBA.expectedResponses === numberOfResponses) {
           var positiveResponses = [];
+          var negativeResponses = [];
           for(var k in GRABBA.responses) {
               response = GRABBA.responses[k];
               if(response) {
                   positiveResponses.push(k);
+              } else {
+                  negativeResponses.push(k);
               }
           }
           
@@ -107,7 +110,11 @@ connection.on('connection', function(socket){
             _sys.puts("sending " + k + "===" + luckyNumber + " = "+ (parseInt(k)===luckyNumber) + " to " + address);
             connection.to(address).emit('round ended', parseInt(k) === luckyNumber);
           }
-          connection.emit('round ended');
+          
+          for(var k in negativeResponses) {
+            var address = negativeResponses[k];
+            connection.to(address).emit('round ended');
+          }
       }
   }
 });

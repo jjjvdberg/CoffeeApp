@@ -9,8 +9,9 @@ drink_start_roundStarted = function() {
 Grabba.State.states[Grabba.State.DRINK_START] = {
     name:"Drink Start",
     page:"drink_start",
+    id:"drink_start",
     listeners:[
-        ["drink_start_start_round","click",drink_start_onStartRoundClick]
+        ["start_round","click",drink_start_onStartRoundClick]
     ],
     serverListeners:[
         ["round started", drink_start_roundStarted]

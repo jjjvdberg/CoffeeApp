@@ -10,7 +10,7 @@ Grabba.State.states[Grabba.State.ROUND_PASS] = {
     name:"Round Pass",
     page:"round_pass",
     listeners:[
-        ["round_pass","ready",round_pass_onReady]
+        [null,"ready",round_pass_onReady]
     ],
     serverListeners:[
         ["round ended",round_pass_roundEnded]

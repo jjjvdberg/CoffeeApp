@@ -9,9 +9,10 @@ function start_onObserveClick(e) {
 Grabba.State.states[Grabba.State.START] = {
     name:"Start",
     page:"start",
+    id:"start",
     listeners:[
-        ["start_to_config","click",start_onStartClick],
-        ["start_to_observer","click",start_onObserveClick]
+        ["to_config","click",start_onStartClick],
+        ["to_observer","click",start_onObserveClick]
     ],
     serverListeners:[
     ]

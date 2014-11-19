@@ -4,8 +4,10 @@
         <script src="lib/jquery-1.11.1.js"></script>
         <script src="lib/jquery.animate-colors-min.js"></script>
         <script src="lib/jquery-ui.min.js"></script>
+        <script src="lib/jquery.titlealert.js"></script>
         <script src="lib/keyevent.js"></script>
         <script src="lib/anipager.js"></script>
+        <script src="lib/messagestack.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         
         <script src="js/grabba.state.js"></script>
@@ -26,9 +28,65 @@
         
         <link href="css/index.css" rel="stylesheet" type="text/css"/>
         <link href="css/pages.css" rel="stylesheet" type="text/css"/>
+        <link href="css/messagestack.css" rel="stylesheet" type="text/css"/>
+        <link href="css/stackstyle.css" rel="stylesheet" type="text/css"/>
         <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div id="messagestack"></div>
+        <div id="stackitems">
+            <div class="start">
+                Welcome to the game, what do you want to do?
+                <div class="buttons">
+                    <button class="to_config">Start</button>
+                    <button class="to_observe">Observe</button>
+                </div>
+            </div>
+            <div class="config">
+                Complete the sentence:<br/> I am <input size='4' id='config_name'/> and I drink <input size='1' id='config_drink'/> the most.
+                <div class="buttons">
+                    <button class="continue">Continue</button>
+                </div>
+            </div>
+            <div class="drink_start">
+                Do you want your drink now?
+                <div class="buttons">
+                    <button class="start_round">Yes</button>
+                </div>
+            </div>
+            <div class="round_start">
+                Starting round...
+            </div>
+            <div class="round_optin">
+                Someone beat you to it! Are you in?
+                <div class="buttons">
+                    <button class="yes">Yes</button>     
+                    <button class="no">No</button>                       
+                </div>
+            </div>
+            <div class="round_join">
+                Waiting for others...
+            </div>
+            <div class="round_pass">
+                No drink? Sure, but you'll have to wait for this round to pass
+            </div>
+            <div class="round_end">
+                Just you hang in there, drinks are coming your way!
+                <div class="buttons">
+                    <button class="back">Got my drink!</button>     
+                </div>
+            </div>
+            <div class="round_end_lucky">
+                Lucky you! You get to walk and serve everyone!
+                <div class="content">
+                    <div id="orderList"></div>  
+                </div>
+                <div class="buttons">
+                    <button class="back">I'm back with drinks!</button>   
+                </div>
+            </div>
+        </div>
+        
         <div id="pages">
             <div id="start" class="page">
                 <div>

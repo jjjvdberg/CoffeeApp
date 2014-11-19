@@ -6,6 +6,9 @@ body {
   padding: 0;
   margin: 0; }
 
+#pages {
+  display: none; }
+
 .page {
   position: absolute;
   bottom: 0;
@@ -31,5 +34,8 @@ body {
 
 .page div {
   padding: 2em; }
+
+#stackitems {
+  display: none; }
 
 /*# sourceMappingURL=index.css.map */

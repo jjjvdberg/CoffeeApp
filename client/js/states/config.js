@@ -8,8 +8,9 @@ function config_onStartClick(e) {
 Grabba.State.states[Grabba.State.CONFIG] = {
     name:"Config",
     page:"config",
+    id:"config",
     listeners:[
-        ["config_start","click",config_onStartClick]
+        ["continue","click",config_onStartClick]
     ],
     serverListeners:[
     ]

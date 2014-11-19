@@ -8,6 +8,10 @@ body {
     margin:0;
 }
 
+#pages {
+    display:none;
+}
+
 .page {
     position:absolute;
     bottom:0;
@@ -34,4 +38,8 @@ body {
 
 .page div {
     padding:2em;
+}
+
+#stackitems {
+    display:none;
 }
